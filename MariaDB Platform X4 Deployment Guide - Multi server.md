@@ -12,7 +12,7 @@ Platform X4 incorporates MariaDB Enterprise Server 10.4, MariaDB MaxScale 2.4, a
 
 ## 1) Assumption
 
-<img src="/Users/kwangbocklee/Desktop/Screen Shot 2020-04-06 at 3.08.55 PM.png" style="zoom:50%;" />
+<img src="/images/PlatformX4_multinode_deploy_1.png" style="zoom:50%;" />
 
 + 2 Node Deployment on RHEL7.7
 
