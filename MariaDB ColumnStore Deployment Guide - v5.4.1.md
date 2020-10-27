@@ -313,13 +313,13 @@ From CMAPI 1.1, you need to add all the nodes even the `PM1` node.
 
 ```bash
 # cs1 Node Add
-curl -k -s -X PUT https://10.0.0.86:8640/cmapi/0.4.0/cluster/add-node --header 'Content-Type:application/json' --header 'x-api-key:8520b9ff570421cc95077a50da660499a1238ffe88a488075efeb0f15b31fe55' --data '{"timeout":120, "node": "cs1"}' | jq .
+$ curl -k -s -X PUT https://10.0.0.86:8640/cmapi/0.4.0/cluster/add-node --header 'Content-Type:application/json' --header 'x-api-key:8520b9ff570421cc95077a50da660499a1238ffe88a488075efeb0f15b31fe55' --data '{"timeout":120, "node": "cs1"}' | jq .
    
 # cs2 Node Add
-curl -k -s -X PUT https://10.0.0.86:8640/cmapi/0.4.0/cluster/add-node --header 'Content-Type:application/json' --header 'x-api-key:8520b9ff570421cc95077a50da660499a1238ffe88a488075efeb0f15b31fe55' --data '{"timeout":120, "node": "cs2"}' | jq .
+$ curl -k -s -X PUT https://10.0.0.86:8640/cmapi/0.4.0/cluster/add-node --header 'Content-Type:application/json' --header 'x-api-key:8520b9ff570421cc95077a50da660499a1238ffe88a488075efeb0f15b31fe55' --data '{"timeout":120, "node": "cs2"}' | jq .
 
 # cs3 Node Add
-curl -k -s -X PUT https://10.0.0.86:8640/cmapi/0.4.0/cluster/add-node --header 'Content-Type:application/json' --header 'x-api-key:8520b9ff570421cc95077a50da660499a1238ffe88a488075efeb0f15b31fe55' --data '{"timeout":120, "node": "cs3"}' | jq .
+$ curl -k -s -X PUT https://10.0.0.86:8640/cmapi/0.4.0/cluster/add-node --header 'Content-Type:application/json' --header 'x-api-key:8520b9ff570421cc95077a50da660499a1238ffe88a488075efeb0f15b31fe55' --data '{"timeout":120, "node": "cs3"}' | jq .
 ```
 
 
@@ -327,7 +327,7 @@ curl -k -s -X PUT https://10.0.0.86:8640/cmapi/0.4.0/cluster/add-node --header '
 After the successful 3 node addition, you can have status like the follows:
 
 ```bash
-curl -k -s https://10.0.0.86:8640/cmapi/0.4.0/cluster/status --header 'Content-Type:application/json' --header 'x-api-key:8520b9ff570421cc95077a50da660499a1238ffe88a488075efeb0f15b31fe55' | jq .
+$ curl -k -s https://10.0.0.86:8640/cmapi/0.4.0/cluster/status --header 'Content-Type:application/json' --header 'x-api-key:8520b9ff570421cc95077a50da660499a1238ffe88a488075efeb0f15b31fe55' | jq .
 {
   "timestamp": "2020-10-27 07:17:43.902533",
   "cs1": {
@@ -437,7 +437,7 @@ curl -k -s https://10.0.0.86:8640/cmapi/0.4.0/cluster/status --header 'Content-T
 If you changed StorageManager Configuration (/etc/columnstore/storagemanager.cnf) after package installation, for example, `Service=local` to `Service=S3`, then you might need to create system catalog again.
 
 ```bash
-# dbbuilder 7
+$ dbbuilder 7
 ```
 
 If your system tables already exist, then you will see a message like the following:
@@ -532,30 +532,30 @@ SET GLOBAL read_only=ON;
 #### Get Status:
 
 ```bash
-curl -k -s https://<pm1_ip>:8640/cmapi/0.4.0/cluster/status --header 'Content-Type:application/json' --header 'x-api-key:somekey123' | jq .
+$ curl -k -s https://<pm1_ip>:8640/cmapi/0.4.0/cluster/status --header 'Content-Type:application/json' --header 'x-api-key:somekey123' | jq .
 ```
 
 #### Start Cluster:
 
 ```bash
-curl -k -s -X PUT https://<pm1_ip>:8640/cmapi/0.4.0/cluster/start --header 'Content-Type:application/json' --header 'x-api-key:somekey123' --data '{"timeout":20}' | jq .
+$ curl -k -s -X PUT https://<pm1_ip>:8640/cmapi/0.4.0/cluster/start --header 'Content-Type:application/json' --header 'x-api-key:somekey123' --data '{"timeout":20}' | jq .
 ```
 
 #### Stop Cluster:
 
 ```bash
-curl -k -s -X PUT https://<pm1_ip>:8640/cmapi/0.4.0/cluster/shutdown --header 'Content-Type:application/json' --header 'x-api-key:somekey123' --data '{"timeout":20}' | jq .
+$ curl -k -s -X PUT https://<pm1_ip>:8640/cmapi/0.4.0/cluster/shutdown --header 'Content-Type:application/json' --header 'x-api-key:somekey123' --data '{"timeout":20}' | jq .
 ```
 
 #### Add Node:
 
 ```bash
-curl -k -s -X PUT https://<pm1_ip>:8640/cmapi/0.4.0/cluster/add-node --header 'Content-Type:application/json' --header 'x-api-key:somekey123' --data '{"timeout":20, "node": "<pm2_ip>"}' | jq .
+$ curl -k -s -X PUT https://<pm1_ip>:8640/cmapi/0.4.0/cluster/add-node --header 'Content-Type:application/json' --header 'x-api-key:somekey123' --data '{"timeout":20, "node": "<pm2_ip>"}' | jq .
 ```
 
 #### Remove Node:
 
 ```bash
-curl -k -s -X PUT https://<pm1_ip>:8640/cmapi/0.4.0/cluster/remove-node --header 'Content-Type:application/json' --header 'x-api-key:MyAPIKey123' --data '{"timeout":20, "node": "<pm2_ip>"}' | jq .
+$ curl -k -s -X PUT https://<pm1_ip>:8640/cmapi/0.4.0/cluster/remove-node --header 'Content-Type:application/json' --header 'x-api-key:MyAPIKey123' --data '{"timeout":20, "node": "<pm2_ip>"}' | jq .
 ```
 
