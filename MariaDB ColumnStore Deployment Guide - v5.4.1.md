@@ -324,6 +324,114 @@ curl -k -s -X PUT https://10.0.0.86:8640/cmapi/0.4.0/cluster/add-node --header '
 
 
 
+After the successful 3 node addition, you can have status like the follows:
+
+```bash
+curl -k -s https://10.0.0.86:8640/cmapi/0.4.0/cluster/status --header 'Content-Type:application/json' --header 'x-api-key:8520b9ff570421cc95077a50da660499a1238ffe88a488075efeb0f15b31fe55' | jq .
+{
+  "timestamp": "2020-10-27 07:17:43.902533",
+  "cs1": {
+    "timestamp": "2020-10-27 07:17:43.909381",
+    "uptime": 79566,
+    "dbrm_mode": "master",
+    "cluster_mode": "readwrite",
+    "dbroots": [
+      "1"
+    ],
+    "module_id": 1,
+    "services": [
+      {
+        "name": "workernode",
+        "pid": 29821
+      },
+      {
+        "name": "controllernode",
+        "pid": 29879
+      },
+      {
+        "name": "PrimProc",
+        "pid": 29886
+      },
+      {
+        "name": "ExeMgr",
+        "pid": 29923
+      },
+      {
+        "name": "WriteEngine",
+        "pid": 29934
+      },
+      {
+        "name": "DMLProc",
+        "pid": 29982
+      },
+      {
+        "name": "DDLProc",
+        "pid": 29985
+      }
+    ]
+  },
+  "cs2": {
+    "timestamp": "2020-10-27 07:17:43.947737",
+    "uptime": 79561,
+    "dbrm_mode": "slave",
+    "cluster_mode": "readonly",
+    "dbroots": [
+      "2"
+    ],
+    "module_id": 2,
+    "services": [
+      {
+        "name": "workernode",
+        "pid": 25328
+      },
+      {
+        "name": "PrimProc",
+        "pid": 25334
+      },
+      {
+        "name": "ExeMgr",
+        "pid": 25375
+      },
+      {
+        "name": "WriteEngine",
+        "pid": 25387
+      }
+    ]
+  },
+  "cs3": {
+    "timestamp": "2020-10-27 07:17:43.985964",
+    "uptime": 505842,
+    "dbrm_mode": "slave",
+    "cluster_mode": "readonly",
+    "dbroots": [
+      "3"
+    ],
+    "module_id": 3,
+    "services": [
+      {
+        "name": "workernode",
+        "pid": 31327
+      },
+      {
+        "name": "PrimProc",
+        "pid": 31333
+      },
+      {
+        "name": "ExeMgr",
+        "pid": 31373
+      },
+      {
+        "name": "WriteEngine",
+        "pid": 31384
+      }
+    ]
+  },
+  "num_nodes": 3
+}
+```
+
+
+
 ### Creating System Table (Optional)
 
 If you changed StorageManager Configuration (/etc/columnstore/storagemanager.cnf) after package installation, for example, `Service=local` to `Service=S3`, then you might need to create system catalog again.
